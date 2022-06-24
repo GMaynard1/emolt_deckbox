@@ -1,0 +1,11 @@
+[Unit]
+Description = Real time data service
+
+[Service]
+ExecStart = /usr/bin/python3 -u /home/pi/rtd_global/main.py
+WorkingDirectory = /home/pi/rtd_global/
+User = pi
+Restart = always
+
+[Install]
+WantedBy = multi-user.target

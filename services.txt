@@ -1,0 +1,45 @@
+Real time data service
+
+[Unit]
+Description = Real time data service
+
+[Service]
+ExecStart = /usr/bin/python3 -u /home/pi/rtd_global/main.py
+WorkingDirectory = /home/pi/rtd_global/
+User = pi
+Restart = always
+
+[Install]
+WantedBy = multi-user.target
+
+
+Moana sensor service
+
+[Unit]
+Description=Bluetooth sensor reader
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python2 -u /home/pi/rtd_global/sensor_reader.py
+WorkingDirectory=/home/pi/rtd_global/
+User=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+Moana sensor service python 3
+
+[Unit]
+Description=Bluetooth sensor reader
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/home/pi/rtd_global/
+ExecStart=/home/pi/li/venv/bin/python3 -u /home/pi/rtd_global/sensor_reader3.py
+User=pi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

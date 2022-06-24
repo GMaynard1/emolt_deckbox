@@ -1,0 +1,11 @@
+
+import paramiko
+k=paramiko.RSAKey.from_private_key_file('/home/pi/.ssh/emolt_dev_pi-emolt-openssh')
+c=paramiko.SSHClient()
+c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+c.connect(hostname='73.114.111.175',port='1111',username='pi-emolt',pkey=k)
+
+
+
+sftp=c.open_sftp()
+sftp.put('/home/pi/rtd_global/towifi/MOANA_0133_50.csv', '/home/pi-emolt/all_raw/aaabc.csv')
