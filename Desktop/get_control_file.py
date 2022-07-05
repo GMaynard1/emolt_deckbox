@@ -13,7 +13,7 @@ vesselname=vesselname.replace("F/V","")
 with open ("/home/pi/Documents/config.yml","r") as yamlfile:
   API_config=yaml.load(yamlfile, Loader=yaml.FullLoader)
 
-address = ['default']['IP']
+address = API_config['default']['IP']
 
 ## Form the URL
 url = 'http://'+address+'/getControl_File?vessel='+vesselname
